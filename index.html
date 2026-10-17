@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#173f35">
+<title>日本溫泉巡禮 ♨️</title>\n<link rel="manifest" href="./manifest.webmanifest">\n<link rel="apple-touch-icon" href="./icon-192.png">
+<style>
+:root{--green:#173f35;--mint:#dcece3;--cream:#fbf7ef;--ink:#24312c;--muted:#69756f;--gold:#d9a94b;--line:#e4e8e2}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;padding-bottom:calc(28px + env(safe-area-inset-bottom))}
+.hero{background:linear-gradient(145deg,#173f35,#316b58);color:#fff;padding:28px 20px 24px;border-radius:0 0 28px 28px}
+.kicker{font-size:12px;letter-spacing:2px;opacity:.8}.hero h1{font-size:29px;line-height:1.25;margin:9px 0}.hero p{margin:0;color:#dcece3;font-size:14px;line-height:1.6}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:20px}.stat{background:#ffffff18;border:1px solid #ffffff28;border-radius:15px;padding:12px 8px;text-align:center}.stat b{display:block;font-size:22px}.stat span{font-size:11px;color:#dcece3}
+.progress{height:7px;background:#ffffff35;border-radius:20px;margin-top:15px;overflow:hidden}.progress div{height:100%;background:#f1cc77;width:0;transition:width .2s}
+nav{display:flex;gap:8px;padding:14px 16px 4px;overflow:auto;position:sticky;top:0;background:#fbf7efed;backdrop-filter:blur(12px);z-index:3}
+nav button,.filter button{white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:9px 13px;background:white;color:var(--ink);font-size:13px}nav button.active,.filter button.active{background:var(--green);color:#fff;border-color:var(--green)}
+main{padding:14px 16px;max-width:720px;margin:auto}.section-title{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:15px 0 10px}.section-title h2{font-size:19px;margin:0}.muted{font-size:12px;color:var(--muted)}
+.filter{display:flex;gap:7px;overflow:auto;padding:3px 0 12px}.search{width:100%;border:1px solid var(--line);border-radius:13px;background:white;padding:12px 13px;font-size:15px;outline-color:var(--green)}
+.region{margin:14px 0 20px}.region-head{display:flex;align-items:center;gap:9px;font-weight:750;font-size:17px;margin-bottom:9px}.region-head span{font-size:23px}
+.place{background:white;border:1px solid var(--line);border-radius:16px;padding:13px;margin:8px 0;box-shadow:0 3px 12px #173f3508}.place-top{display:flex;align-items:flex-start;gap:10px}.check{width:22px;height:22px;accent-color:var(--green);flex:none;margin-top:2px}.place h3{font-size:15px;margin:0 0 4px}.place .desc{font-size:12px;color:var(--muted);line-height:1.5}.pill{margin-left:auto;font-size:10px;background:#f5edd9;color:#805c19;padding:5px 8px;border-radius:999px;white-space:nowrap}.place.done{border-color:#8bb7a0;background:#f5fbf7}.place.done h3{text-decoration:line-through;text-decoration-color:#9ab7a6}.task{display:flex;gap:8px;align-items:flex-start;margin:11px 0 0 32px;font-size:12px;color:#45554d;line-height:1.45}.task input{accent-color:var(--green);margin:1px 0 0;width:17px;height:17px;flex:none}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0}.challenge{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid #edf0eb}.challenge:last-child{border-bottom:0}.challenge input{accent-color:var(--green);width:20px;height:20px;flex:none}.challenge b{font-size:14px}.challenge p{font-size:12px;color:var(--muted);margin:4px 0 0;line-height:1.45}.points{font-size:11px;background:var(--mint);color:var(--green);padding:4px 7px;border-radius:99px;margin-left:5px}
+label{font-size:12px;font-weight:700;display:block;margin:12px 0 6px}.field{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;font:inherit;background:#fff;color:var(--ink)}textarea.field{min-height:86px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:0;border-radius:12px;background:var(--green);color:white;font-weight:700;padding:12px 15px;font-size:14px}.btn.secondary{background:#edf3ee;color:var(--green)}.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.record{background:#f5faf6;border:1px solid #dbe9df;border-radius:12px;padding:12px;margin-top:10px;font-size:13px;line-height:1.6}.record button{float:right;border:0;background:transparent;color:#9a4c3d;font-size:12px}
+.hidden{display:none!important}.empty{text-align:center;color:var(--muted);padding:25px 10px}.foot{text-align:center;color:var(--muted);font-size:11px;padding:15px 20px;line-height:1.7}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="kicker">JAPAN ONSEN QUEST · TRAVEL CHECKLIST</div>
+<h1>日本溫泉巡禮<br>我的泡湯冒險簿 ♨️</h1>
+<p>打卡溫泉地、解鎖有趣任務，把每一次旅行變成成就。</p>
+<div class="stats">
+<div class="stat"><b id="visitedCount">0/25</b><span>溫泉地打卡</span></div>
+<div class="stat"><b id="taskCount">0/25</b><span>特色任務</span></div>
+<div class="stat"><b id="score">0</b><span>挑戰積分</span></div>
+</div>
+<div class="progress"><div id="progressBar"></div></div>
+</header>
+<nav>
+<button class="active" data-tab="places">🗾 溫泉清單</button>
+<button data-tab="challenges">🏅 成就挑戰</button>
+<button data-tab="diary">📔 旅行紀錄</button>
+</nav>
+<main>
+<section id="placesTab">
+<div class="section-title"><h2>溫泉地圖打卡</h2><span class="muted">25 個代表性溫泉地</span></div>
+<input class="search" id="search" placeholder="🔎 搜尋溫泉地或任務…">
+<div class="filter" id="filters"></div>
+<div id="places"></div>
+</section>
+<section id="challengesTab" class="hidden">
+<div class="section-title"><h2>溫泉玩家限定成就</h2><span class="muted">完成任務累積積分</span></div>
+<div class="card"><div id="rank" style="font-size:18px;font-weight:800">🌱 溫泉新手村居民</div><p class="muted" id="rankText">從第一次足湯或溫泉蛋開始冒險吧！</p><div class="progress" style="background:#e9eee9"><div id="challengeBar" style="background:#d9a94b"></div></div></div>
+<div class="card" id="challenges"></div>
+</section>
+<section id="diaryTab" class="hidden">
+<div class="section-title"><h2>旅行紀錄卡</h2><span class="muted">回憶留在這裡</span></div>
+<div class="card">
+<label for="diaryPlace">溫泉地名稱</label><input id="diaryPlace" class="field" placeholder="例如：銀山溫泉">
+<div class="row"><div><label for="diaryDate">造訪日期</label><input id="diaryDate" type="date" class="field"></div><div><label for="diaryRating">滿意度</label><select id="diaryRating" class="field"><option value="5">★★★★★ 必再訪</option><option value="4">★★★★ 很棒</option><option value="3">★★★ 還不錯</option><option value="2">★★ 普通</option><option value="1">★ 不太合適</option></select></div></div>
+<label for="diaryType">最喜歡的體驗</label><select id="diaryType" class="field"><option>露天風呂</option><option>私人湯屋</option><option>公共浴場巡禮</option><option>足湯</option><option>砂浴或特殊溫泉</option><option>溫泉旅館一泊二食</option></select>
+<label for="diaryMemory">回憶／下次想完成的事</label><textarea id="diaryMemory" class="field" placeholder="例如：下雪時一定要再來，這次還沒吃到溫泉蛋！"></textarea>
+<div class="btn-row"><button class="btn" id="saveDiary">＋ 儲存紀錄</button><button class="btn secondary" id="exportData">匯出備份</button><button class="btn secondary" id="importBtn">匯入備份</button><input id="importFile" type="file" accept="application/json" class="hidden"></div>
+<div id="diaries"></div>
+</div>
+</section>
+</main>
+<div class="foot">你的勾選與紀錄會儲存在這台裝置的瀏覽器中。<br>建議定期使用「匯出備份」保存資料。溫泉設施與季節體驗請以當地公告為準。</div>
+<script>
+const regions=[
+{name:"北海道",emoji:"❄️",items:[["登別溫泉","地獄谷冒險家","看火山蒸氣與硫磺煙霧"],["定山溪溫泉","溪谷療癒師","泡湯後散步賞溪谷"],["湯之川溫泉","海景泡湯王","尋找能看到海景的浴池"]]},
+{name:"東北",emoji:"⛄",items:[["銀山溫泉","大正浪漫主角","拍一張復古溫泉街照片"],["藏王溫泉","雪怪獵人","冬季尋找樹冰"],["乳頭溫泉鄉","秘湯探險家","體驗森林露天風呂"],["鳴子溫泉","木芥子收藏家","尋找當地木偶紀念品"]]},
+{name:"關東",emoji:"🚃",items:[["草津溫泉","湯畑觀察員","看湯畑與湯揉表演"],["箱根溫泉","富士山追逐者","試著尋找富士山景觀"],["伊香保溫泉","365階挑戰者","走訪石段街"],["鬼怒川溫泉","溪谷探險家","欣賞溪谷與吊橋"]]},
+{name:"中部・北陸",emoji:"🏔️",items:[["下呂溫泉","美肌傳說收藏家","逛溫泉街、找足湯"],["野澤溫泉","公共浴場達人","挑戰不同外湯"],["加賀溫泉鄉","工藝尋寶者","欣賞九谷燒或山中漆器"],["熱海溫泉","海邊度假玩家","泡湯後看海散步"]]},
+{name:"關西",emoji:"👘",items:[["有馬溫泉","金銀湯鑑定師","體驗金泉或銀泉"],["城崎溫泉","浴衣街拍達人","穿浴衣巡遊外湯"],["白濱溫泉","海岸線療癒師","尋找面海露天溫泉"]]},
+{name:"中國・四國",emoji:"🍊",items:[["道後溫泉","古湯時光旅人","欣賞道後溫泉本館"],["玉造溫泉","肌膚保養研究員","漫步溫泉街與河岸"],["三朝溫泉","昭和風情玩家","尋找老街與河畔溫泉"]]},
+{name:"九州",emoji:"🌋",items:[["別府溫泉","地獄巡禮隊長","看藍色或紅色地獄池"],["由布院溫泉","晨霧攝影師","清晨到金鱗湖散步"],["黑川溫泉","秘湯通行證獵人","蒐集露天風呂入湯體驗"],["指宿溫泉","砂浴勇者","體驗天然砂浴"],["嬉野溫泉","茶香療癒師","品嚐嬉野茶與溫泉湯豆腐"]]}];
+const challenges=[["雪見風呂","在下雪時泡露天溫泉",3],["星空泡湯","晚上泡湯並觀賞星空",2],["浴衣散策","穿浴衣逛完整條溫泉街",2],["外湯巡禮","一天體驗 3 間不同公共浴場",3],["秘湯探索","前往山林中的溫泉",3],["溫泉蛋達人","品嚐當地溫泉蛋或溫泉料理",1],["足湯休息站","在車站或街邊找一處足湯",1],["溫泉旅館一泊二食","入住附晚餐與早餐的溫泉旅館",3],["露天風呂攝影師","留下最喜歡的溫泉景色（遵守浴場拍攝規定）",2],["溫泉印章獵人","蒐集溫泉街的旅遊印章或紀念章",2]];
+const $=id=>document.getElementById(id);
+const allPlaces=regions.flatMap(r=>r.items.map(i=>({region:r.name,emoji:r.emoji,name:i[0],title:i[1],task:i[2]})));
+let state={visited:[],tasks:[],challenges:[],diaries:[]};
+try{state={...state,...JSON.parse(localStorage.getItem("onsenQuestState")||"{}")}}catch(e){}
+let currentRegion="全部地區";
+function save(){try{localStorage.setItem("onsenQuestState",JSON.stringify(state))}catch(e){};renderStats()}
+function renderStats(){const score=challenges.filter(c=>state.challenges.includes(c[0])).reduce((s,c)=>s+c[2],0);$("visitedCount").textContent=`${state.visited.length}/25`;$("taskCount").textContent=`${state.tasks.length}/25`;$("score").textContent=score;$("progressBar").style.width=`${state.visited.length/25*100}%`;$("challengeBar").style.width=`${score/21*100}%`;let rank=score>=20?"👑 日本溫泉傳說級玩家":score>=12?"♨️ 溫泉資深玩家":score>=6?"🧖 溫泉冒險家":"🌱 溫泉新手村居民";$("rank").textContent=rank;$("rankText").textContent=score>=20?"全國溫泉探索大師，繼續解鎖秘湯！":score>=12?"你已掌握溫泉旅行的精髓。":score>=6?"正在解鎖各種有趣的泡湯體驗。":"從第一次足湯或溫泉蛋開始冒險吧！"}
+function renderFilters(){const names=["全部地區",...regions.map(r=>r.name)];$("filters").innerHTML=names.map(n=>`<button class="${n===currentRegion?"active":""}" data-region="${n}">${n}</button>`).join("");$("filters").querySelectorAll("button").forEach(b=>b.onclick=()=>{currentRegion=b.dataset.region;renderFilters();renderPlaces()})}
+function renderPlaces(){const q=$("search").value.trim().toLowerCase();let html="";regions.filter(r=>currentRegion==="全部地區"||r.name===currentRegion).forEach(r=>{const items=allPlaces.filter(p=>p.region===r.name&&[p.name,p.title,p.task,r.name].join(" ").toLowerCase().includes(q));if(!items.length)return;html+=`<div class="region"><div class="region-head"><span>${r.emoji}</span>${r.name}</div>`;items.forEach(p=>{html+=`<article class="place ${state.visited.includes(p.name)?"done":""}"><div class="place-top"><input class="check" type="checkbox" aria-label="已造訪 ${p.name}" data-visit="${p.name}" ${state.visited.includes(p.name)?"checked":""}><div style="flex:1"><h3>${p.name}</h3><div class="desc">🏅 ${p.title}</div></div>${state.visited.includes(p.name)?'<span class="pill">已打卡</span>':""}</div><label class="task"><input type="checkbox" data-task="${p.name}" ${state.tasks.includes(p.name)?"checked":""}>🎯 任務：${p.task}</label></article>`});html+="</div>"});$("places").innerHTML=html||'<div class="empty">找不到符合的溫泉地，試試其他關鍵字。</div>';$("places").querySelectorAll("[data-visit]").forEach(el=>el.onchange=()=>{const n=el.dataset.visit;state.visited=el.checked?[...new Set([...state.visited,n])]:state.visited.filter(x=>x!==n);save();renderPlaces()});$("places").querySelectorAll("[data-task]").forEach(el=>el.onchange=()=>{const n=el.dataset.task;state.tasks=el.checked?[...new Set([...state.tasks,n])]:state.tasks.filter(x=>x!==n);save()})}
+function renderChallenges(){$("challenges").innerHTML=challenges.map(c=>`<label class="challenge"><input type="checkbox" data-challenge="${c[0]}" ${state.challenges.includes(c[0])?"checked":""}><span style="flex:1"><b>${c[0]} <span class="points">${c[2]} 分</span></b><p>${c[1]}</p></span></label>`).join("");$("challenges").querySelectorAll("[data-challenge]").forEach(el=>el.onchange=()=>{const n=el.dataset.challenge;state.challenges=el.checked?[...new Set([...state.challenges,n])]:state.challenges.filter(x=>x!==n);save();renderChallenges()})}
+function renderDiaries(){$("diaries").innerHTML=state.diaries.length?'<h3 style="font-size:15px;margin:20px 0 8px">已儲存的回憶</h3>'+state.diaries.map((d,i)=>`<div class="record"><button data-delete="${i}">刪除</button><b>♨️ ${esc(d.place)}</b><br>${esc(d.date||"日期未填")} · ${esc(d.type)} · ${"★".repeat(+d.rating)}${"☆".repeat(5-(+d.rating))}<br>${esc(d.memory||"尚未留下文字回憶")}</div>`).join(""):'<p class="muted" style="text-align:center;padding:12px">還沒有紀錄，完成一次泡湯旅行後來寫下回憶吧！</p>';$("diaries").querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>{if(confirm("確定刪除這筆紀錄？")){state.diaries.splice(+b.dataset.delete,1);save();renderDiaries()}})}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("active",x===b));["places","challenges","diary"].forEach(t=>$(t+"Tab").classList.toggle("hidden",t!==b.dataset.tab))});
+$("search").addEventListener("input",renderPlaces);
+$("saveDiary").onclick=()=>{const place=$("diaryPlace").value.trim();if(!place){alert("請先填寫溫泉地名稱");return}state.diaries.unshift({place,date:$("diaryDate").value,rating:$("diaryRating").value,type:$("diaryType").value,memory:$("diaryMemory").value.trim()});save();renderDiaries();$("diaryPlace").value="";$("diaryMemory").value="";alert("紀錄已儲存！")};
+$("exportData").onclick=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="日本溫泉巡禮備份.json";a.click();URL.revokeObjectURL(a.href)};
+$("importBtn").onclick=()=>$("importFile").click();
+$("importFile").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data.visited)||!Array.isArray(data.diaries))throw Error();state={...state,...data};save();renderAll();alert("備份匯入成功！")}catch(err){alert("檔案格式不正確，無法匯入。")}e.target.value=""};
+function renderAll(){renderStats();renderFilters();renderPlaces();renderChallenges();renderDiaries()}
+renderAll();
+</script>
+<script>if("serviceWorker" in navigator && location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}</script>\n</body>
+</html>
